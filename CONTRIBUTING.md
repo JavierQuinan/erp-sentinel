@@ -1,0 +1,3 @@
+# Contributing
+
+Open an issue before substantial changes. Use a focused branch and PR, explain the threat or use case, include positive and negative fixtures, and document limitations. Keep code and documentation in English. Do not include real customer data, secrets or proprietary ERP code. Review AI-generated contributions as fully as human-written code; contributors remain accountable for provenance, licensing and correctness. Do not claim a test passed unless executed. Follow SECURITY.md for vulnerabilities. Apache-2.0 applies to original project contributions; third-party code retains its applicable license.
