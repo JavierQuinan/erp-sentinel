@@ -1,0 +1,11 @@
+# Threat model — initial scope
+Assets: policy integrity, fixture identities, baseline/candidate provenance, findings, lab credentials and host isolation.
+Trust boundaries: untrusted checkout and policy input; trusted orchestrator; isolated disposable Odoo/PostgreSQL lab; untrusted adapter output; CI artifact storage.
+Controls:
+- No production connection, customer data, external database or arbitrary remote target in MVP. Lab must use synthetic data, separate baseline/candidate databases, nonprivileged containers, no host Docker socket, no host secrets, restricted networking and explicit teardown. Treat candidate addon execution as untrusted code; use disposable isolated runner/VM for untrusted PRs. Do not execute fork code with privileged workflow tokens.
+- Strict policy schema, reject unknown keys, duplicate IDs, unsafe paths, executable expressions, YAML aliases/tags and oversized input. No dynamic eval, shell interpolation or arbitrary method dispatch.
+- Resolve fixture IDs in trusted setup, validate actual actor and company context; no sudo or superuser during measured operations. Setup privileges separated from probe identity. Use real ORM operations; write/create/unlink only on disposable synthetic fixtures, rollback and reset per case. Rollback alone does not undo external effects; block egress and integrations.
+- Distinguish allow/deny/error/unsupported. Only access-denial exception attributable to operation is deny; unexpected exceptions, missing fixtures and timeout are error. Fail closed for required checks. Do not infer full authorization coverage.
+- Evidence contains identifiers, expected/observed outcomes, versions, hashes and reason codes, not record content, credentials or stack traces with secrets. Validate adapter response, cap size and redact logs. Hashes establish integrity comparison, not authorship or legal admissibility.
+- Pin dependencies/images, least-privilege CI, no secrets in untrusted jobs, review third-party licenses and provenance. No automatic remediation or publication.
+Residual risks: hostile addon may tamper with in-process observations; isolation protects host but does not guarantee truthful results. Document trust in lab code, independently assert fixture controls, and do not advertise adversarial attestation.
