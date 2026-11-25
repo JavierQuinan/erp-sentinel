@@ -1,0 +1,3 @@
+# Competitive validation backlog
+
+No novelty or market leadership claim is established yet. Compare OCA pylint-odoo, OpenUpgrade, OCA auditlog, Semgrep, Bandit and existing Odoo MCP servers. Record repository URL, license, maintained versions, last release, exact overlapping capability and reproducible gap. Verify the project name on GitHub, PyPI and relevant trademark databases before publishing. Evaluate Apache-2.0 compatibility for each dependency; do not copy AGPL code into the core without review. Validate demand with Odoo developers and partners. Evaluate ai-dev-team-marketplace integration after inspecting its current release and instructions.
